@@ -5,28 +5,22 @@
  */
 package com.dm.agility.ttdtraining;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  *
  * @author Gamal_sabdelmeged
  */
-@Controller
-@EnableAutoConfiguration
-public class Application {
-    
-    
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-        return "Hello World!";
-    }
+@SpringBootApplication
+public class Application implements CommandLineRunner {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... strings) throws Exception {
     }
 }
