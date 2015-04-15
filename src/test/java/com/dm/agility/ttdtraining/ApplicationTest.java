@@ -56,6 +56,7 @@ public class ApplicationTest {
     @Test
     public void testInjectedControllers() {
         assertTrue(this.ctx.containsBean("feedReader"));
+        assertTrue(this.ctx.containsBean("readerService"));
     }
 
     @Test
