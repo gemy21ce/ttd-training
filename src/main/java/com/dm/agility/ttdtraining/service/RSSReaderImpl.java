@@ -16,6 +16,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 
 /**
@@ -25,12 +26,14 @@ import org.springframework.stereotype.Service;
 @Service("readerService")
 public class RSSReaderImpl implements RSSReader{
 
-    @Value("${googlewebserviceURL:http://localhost:8084/samplefeed.xml}")
+    @Value("${googlewebserviceURL}")
     private String googleNewsServiceURL;
     
     @Override
     public String readGoogleNews() {
         try {
+            Assert.notNull(googleNewsServiceURL);
+            
             CloseableHttpClient httpclient = HttpClients.createDefault();
             
             HttpGet httpGet = new HttpGet(googleNewsServiceURL);

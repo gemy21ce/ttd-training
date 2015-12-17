@@ -32,4 +32,16 @@ public class ServiceReaderTest {
         Assert.assertTrue(rss.contains("<rss version=\"2.0\">"));
     }
     
+    @Autowired
+    private RSSMailSender rssms;
+    
+    @Test
+    public void testSendFeedInMail(){
+        
+        String[] emails = {"gmal.shaban@gmail.com"};
+        
+        Integer status = rssms.sendFeedTo(emails,reader.readGoogleNews());
+        
+        Assert.assertEquals("response status must be 200 ", 200, status.intValue());
+    }
 }
